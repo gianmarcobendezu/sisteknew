@@ -59,22 +59,36 @@
                         class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     >
                 </div>
-    
+                
+                <!---
                 <table style="zoom: 85%"  class="verflow-y-auto max-h-64 w-full text-left border-collapse border border-gray-200">
                     <thead>
                         <tr class="bg-gray-100">
+
                             <th class="p-2 border border-gray-200">Descripción</th>
                             <th class="p-2 border border-gray-200">Cantidad</th>
-                            <th class="p-2 border border-gray-200">Temática</th>
-                            <th class="p-2 border border-gray-200">Color</th>
                             <th class="p-2 border border-gray-200">Observación</th>
 
                         </tr>
                     </thead>
                     <tbody id="tablacuerpopicnic">
-                        <!-- Aquí se agregan las filas dinámicamente -->
                     </tbody>
                 </table>
+            -->
+
+                <table class="min-w-full border border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="py-2 px-4 text-left">Categorías</th>
+                            <th class="py-2 px-4 text-left">Customización</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-dinamica">
+                        <!-- Aquí se llenarán los datos dinámicamente -->
+                    </tbody>
+                </table>
+
+                
     
                 <button 
                     class="w-full py-3 bg-[#77006b]  text-white rounded-lg font-semibold shadow-lg hover:bg-gray-600 transition"
@@ -199,18 +213,25 @@
     function cambiarexperiencia()
     {
 
+        /*
         var descripcion = "Mesa";
         var cantidad = 1;
         agregarFila(descripcion, cantidad);
+        */
 
+        /*
         var descripcion = "Columpio Panorámico";
         var cantidad = 1;
         agregarFila(descripcion, cantidad);
-
+        */
+        
+        /*
         var descripcion = "Alfombra Decorativa";
         var cantidad = 1;
         agregarFila(descripcion, cantidad);
+        */
 
+        /*
         var descripcion = "Faroles";
         var cantidad = 1;
         agregarFila(descripcion, cantidad);
@@ -218,8 +239,12 @@
         var descripcion = "Candelabros";
         var cantidad = 1;
         agregarFila(descripcion, cantidad);
+        */
+        var descripcion = "ALIMENTACIÓN Y BEBIDAS";
+        var cantidad = 1;
+        agregarFilaCategoria(descripcion, cantidad);
 
-        var descripcion = "Decoración de Flores Secas";
+        var descripcion = "Decoración de Flores";
         var cantidad = 1;
         agregarFila(descripcion, cantidad);
 
@@ -244,12 +269,44 @@
         var cantidad = 1;
         agregarFila(descripcion, cantidad);
 
+        var descripcion = "LUCES";
+        var cantidad = 1;
+        agregarFilaCategoria(descripcion, cantidad);
+
+        var descripcion = "ENTRETENIMIENTO";
+        var cantidad = 1;
+        agregarFilaCategoria(descripcion, cantidad);
+
     }
 
 
     //$("#tablacuerpopicnic").append("<tr><td>Mesa</td><td>2</td></tr>")
     
+    function agregarFilaCategoria(descripcion,cantidad)
+    {
 
+        var cuerpoTabla = document.getElementById("tablacuerpopicnic");
+
+    // Crear elementos de fila y celdas
+    var fila = document.createElement("tr");
+    var celdaDescripcion = document.createElement("td");
+    var celdaCantidad = document.createElement("td");
+    var celdaMarca = document.createElement("td");
+
+    // Asignar valores a las celdas
+    celdaDescripcion.textContent = descripcion;
+    
+
+    // Agregar celdas a la fila
+    fila.appendChild(celdaDescripcion);
+   
+
+
+    // Agregar fila al cuerpo de la tabla
+    cuerpoTabla.appendChild(fila);
+
+
+    }
 
     function agregarFila(descripcion, cantidad) {
     // Obtener el cuerpo de la tabla
@@ -259,7 +316,7 @@
     var fila = document.createElement("tr");
     var celdaDescripcion = document.createElement("td");
     var celdaCantidad = document.createElement("td");
-    var celdaTematica = document.createElement("td");
+    var celdaMarca = document.createElement("td");
 
     // Asignar valores a las celdas
     celdaDescripcion.textContent = descripcion;
@@ -273,10 +330,6 @@
 
     celdaCantidad.appendChild(inputCantidad);
     
-
-    // Crear el elemento select dinámicamente
-    var selectTematica = document.createElement("select");
-    selectTematica.classList.add("w-full", "px-4", "py-2", "border", "rounded-lg", "focus:ring-2", "focus:ring-blue-500", "focus:outline-none");
 
 
     var opcionx = document.createElement("option");
@@ -299,6 +352,7 @@
     opcion4.value = "4";
     opcion4.textContent = "Vintage";
 
+    /*
     var opcion5 = document.createElement("option");
     opcion5.value = "5";
     opcion5.textContent = "Hawaiiano";
@@ -310,6 +364,8 @@
     var opcion7 = document.createElement("option");
     opcion7.value = "7";
     opcion7.textContent = "Tematico de Peliculas";
+
+    */
 
     var opcion8 = document.createElement("option");
     opcion8.value = "8";
@@ -325,65 +381,16 @@
 
 
     // Colores primarios
-    var opcion1y = document.createElement("option");
-    opcion1y.value = "amarillo";
-    opcion1y.textContent = "Amarillo (Primario)";
-    selectColores.appendChild(opcion1y);
+    var inputMarca = document.createElement("input");
+    inputMarca.type = "text";
+    inputMarca.value = "";
+    inputMarca.classList.add("w-full", "px-4", "py-2", "border", "rounded-lg", "focus:ring-2", "focus:ring-blue-500", "focus:outline-none");
+    inputMarca.min = "0"; // valor mínimo
+    inputMarca.style.width = "100px";  // Ajusta el ancho a un valor personalizado en píxeles
 
-    var opcion2y = document.createElement("option");
-    opcion2.yvalue = "rojo";
-    opcion2y.textContent = "Rojo (Primario)";
-    selectColores.appendChild(opcion2y);
-
-    var opcion3y = document.createElement("option");
-    opcion3y.value = "azul";
-    opcion3y.textContent = "Azul (Primario)";
-    selectColores.appendChild(opcion3y);
-
-    // Colores secundarios
-    var opcion4y = document.createElement("option");
-    opcion4y.value = "naranja";
-    opcion4y.textContent = "Naranja (Secundario)";
-    selectColores.appendChild(opcion4y);
-
-    var opcion5y = document.createElement("option");
-    opcion5y.value = "verde";
-    opcion5y.textContent = "Verde (Secundario)";
-    selectColores.appendChild(opcion5y);
-
-    var opcion6y = document.createElement("option");
-    opcion6y.value = "morado";
-    opcion6y.textContent = "Morado (Secundario)";
-    selectColores.appendChild(opcion6y);
-
-    // Colores terciarios
-    var opcion7y = document.createElement("option");
-    opcion7y.value = "amarillo-verde";
-    opcion7y.textContent = "Amarillo-Verde (Terciario)";
-    selectColores.appendChild(opcion7y);
-
-    var opcion8y = document.createElement("option");
-    opcion8y.value = "rojo-naranja";
-    opcion8y.textContent = "Rojo-Naranja (Terciario)";
-    selectColores.appendChild(opcion8y);
-
-    var opcion9y = document.createElement("option");
-    opcion9y.value = "azul-verde";
-    opcion9y.textContent = "Azul-Verde (Terciario)";
-    selectColores.appendChild(opcion9y);
-
-    var opcion10y = document.createElement("option");
-    opcion10y.value = "rojo-morado";
-    opcion10y.textContent = "Rojo-Morado (Terciario)";
-    selectColores.appendChild(opcion10y);
-
-    // Agregar el select a la celdaColores
-    celdaColores.appendChild(selectColores);
+    celdaMarca.appendChild(inputMarca);
     
     
-
-
-
     var celdaObservaciones = document.createElement("td");
     var textarea = document.createElement("textarea");
     textarea.rows = "1";
@@ -391,33 +398,232 @@
     textarea.classList.add("w-full", "px-4", "py-2", "border", "rounded-lg", "focus:ring-2", "focus:ring-blue-500", "focus:outline-none");
     celdaObservaciones.appendChild(textarea);
 
-
-    // Agregar las opciones al select
-    selectTematica.appendChild(opcionx);
-    selectTematica.appendChild(opcion1);
-    selectTematica.appendChild(opcion2);
-    selectTematica.appendChild(opcion3);
-    selectTematica.appendChild(opcion4);
-    selectTematica.appendChild(opcion5);
-    selectTematica.appendChild(opcion6);
-    selectTematica.appendChild(opcion7);
-    selectTematica.appendChild(opcion8);
-
-    // Agregar el select a la celdaTematica
-    celdaTematica.appendChild(selectTematica);
-
     // Agregar celdas a la fila
     fila.appendChild(celdaDescripcion);
     fila.appendChild(celdaCantidad);
-    fila.appendChild(celdaTematica);
 
-    fila.appendChild(celdaColores);
+    fila.appendChild(celdaMarca);
     fila.appendChild(celdaObservaciones);
 
 
     // Agregar fila al cuerpo de la tabla
     cuerpoTabla.appendChild(fila);
 }
+
+//
+
+
+var tablaDinamica = document.getElementById('tabla-dinamica');
+
+const datos = [
+    {
+        id: 1,
+        nombre: 'ALIMENTACIÓN Y BEBIDAS',
+        hijos: [
+            {
+                id: 11,
+                nombre: 'BOCADITOS',
+                items: [
+                    { id: 111, nombre: 'Item 1.1.1' },
+                    { id: 112, nombre: 'Item 1.1.2' },
+                ],
+            },
+            {
+                id: 12,
+                nombre: 'FIAMBRES',
+                items: [
+                    { id: 121, nombre: 'JAMÓN SERRANO' },
+                    { id: 122, nombre: 'JAMÓN AHUMADO' },
+
+                    { id: 123, nombre: 'JAMÓN CROCANTE' },
+
+                    { id: 124, nombre: 'JAMÓN DE PAÍS' },
+                    { id: 125, nombre: 'SALAME ESPAÑOL' },
+                ],
+            },
+            
+            {
+                id: 13,
+                nombre: 'QUESOS',
+                items: [
+                    { id: 131, nombre: 'QUESO DE CABRA' },
+                    { id: 132, nombre: 'QUESO MANCHEGO' },
+                    { id: 133, nombre: 'QUESO GOUDA' },
+                    { id: 134, nombre: 'QUESO MOZARELLA' }
+                ],
+            },
+            
+
+            {
+                id: 14,
+                nombre: 'CAFE E INFUSIONES',
+                items: [
+                    { id: 141, nombre: 'Item 1.4.1' },
+                ],
+            },
+            {
+                id: 15,
+                nombre: 'BEBIDAS',
+                items: [
+                    { id: 151, nombre: 'Item 1.5.1' },
+                ],
+            },
+
+        ],
+    },
+    {
+        id: 2,
+        nombre: 'LUCES',
+        hijos: [
+            {
+                id: 21,
+                nombre: 'GUIRNALDAS',
+                items: [
+                    { id: 211, nombre: 'Item 2.1.1' },
+                ],
+            },
+        ],
+    },
+    {
+        id: 3,
+        nombre: 'ENTRETENIMIENTO',
+        hijos: [
+            {
+                id: 31,
+                nombre: 'SHOW AFRO',
+                items: [
+                    { id: 311, nombre: 'Item 3.1.1' },
+                ],
+            },
+            {
+                id: 32,
+                nombre: 'SAXOFONISTA',
+                items: [
+                    { id: 312, nombre: 'Item 3.1.1' },
+                ],
+            },
+            {
+                id: 33,
+                nombre: 'DJ',
+                items: [
+                    { id: 313, nombre: 'Item 3.1.1' },
+                ],
+            },
+            {
+                id: 34,
+                nombre: 'VIOLIN',
+                items: [
+                    { id: 314, nombre: 'Item 3.1.1' },
+                ],
+            },
+            {
+                id: 35,
+                nombre: 'JUEGOS ARTIFICIALES',
+                items: [
+                    { id: 315, nombre: 'Item 3.1.1' },
+                ],
+            },
+            {
+                id: 36,
+                nombre: 'FOTOGRAFO',
+                items: [
+                    { id: 316, nombre: 'Item 3.1.1' },
+                ],
+            },
+            {
+                id: 37,
+                nombre: 'FOTOGRAFO',
+                items: [
+                    { id: 317, nombre: 'Item 3.1.1' },
+                ],
+            },
+            {
+                id: 38,
+                nombre: 'VIDEO CON DRONE',
+                items: [
+                    { id: 318, nombre: 'Item 3.1.1' },
+                ],
+            }
+
+        ],
+    },
+
+];
+
+    datos.forEach(categoria => {
+        // Crear fila principal de categoría
+        var filaPadre = document.createElement('tr');
+        filaPadre.className = 'border-b border-gray-300';
+
+        filaPadre.innerHTML = `
+            <td class="py-2 px-4 font-bold cursor-pointer bg-gray-200 hover:bg-gray-300 toggle-row" 
+                data-target="#subcategorias-${categoria.id}">
+                ${categoria.nombre}
+            </td>
+            <td class="py-2 px-4"></td>
+        `;
+
+        tablaDinamica.appendChild(filaPadre);
+
+        // Crear fila para las subcategorías (oculta por defecto)
+        var filaSubcategorias = document.createElement('tr');
+        filaSubcategorias.id = `subcategorias-${categoria.id}`;
+        filaSubcategorias.className = 'hidden bg-gray-50';
+
+        var subcategoriasHTML = '';
+
+        categoria.hijos.forEach(subcategoria => {
+            // Crear fila de subcategoría
+            subcategoriasHTML += `
+                <tr class="border-b border-gray-200">
+                    <td class="py-2 px-4 cursor-pointer bg-gray-100 hover:bg-gray-200 toggle-row" 
+                        data-target="#items-${subcategoria.id}">
+                        ${subcategoria.nombre}
+                    </td>
+                    <td class="py-2 px-4"></td>
+                </tr>
+                <!-- Fila para los items de la subcategoría (oculta por defecto) -->
+                <tr id="items-${subcategoria.id}" class="hidden bg-gray-50">
+                    <td colspan="2">
+                        <table class="ml-8 w-full border-l border-gray-300">
+                            ${subcategoria.items
+                                .map(
+                                    item => `
+                                    <tr>
+                                        <td class="py-2 px-4">${item.nombre}</td>
+                                        <td class="py-2 px-4">Cantidad</td>
+                                        <td class="py-2 px-4">Observaciones</td>
+                                    </tr>
+                                `
+                                )
+                                .join('')}
+                        </table>
+                    </td>
+                </tr>
+            `;
+        });
+
+        filaSubcategorias.innerHTML = `
+            <td colspan="2">
+                <table class="ml-4 w-full border-l border-gray-300">
+                    ${subcategoriasHTML}
+                </table>
+            </td>
+        `;
+
+        tablaDinamica.appendChild(filaSubcategorias);
+    });
+
+    // Agregar funcionalidad de acordeón
+    document.querySelectorAll('.toggle-row').forEach(el => {
+        el.addEventListener('click', function () {
+            const target = document.querySelector(el.getAttribute('data-target'));
+            if (target) {
+                target.classList.toggle('hidden'); // Alternar visibilidad
+            }
+        });
+    });
+
 
 
 </script>
