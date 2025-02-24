@@ -75,8 +75,21 @@
                     </tbody>
                 </table>
             -->
+
+                <table class="min-w-full border border-gray-300">
+
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="py-2 px-4 text-left">INCLUYE</th>
+                            <th class="py-2 px-4 text-left">Customización</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-dinamicax">
+                    </tbody>
+
+                </table>
             
-                <h2>¿Desea upgrade de su Picnic?</h2>
+                <h2>¿Desea un upgrade de su Picnic?</h2>
 
                 <table class="min-w-full border border-gray-300">
                     <thead>
@@ -417,6 +430,8 @@
 
 var tablaDinamica = document.getElementById('tabla-dinamica');
 
+var tablaDinamicax = document.getElementById('tabla-dinamicax');
+
 const datos = [
     {
         id: 1,
@@ -455,8 +470,9 @@ const datos = [
                     { id: 133, nombre: 'QUESO PARIA' },
                     { id: 134, nombre: 'QUESO EDAM' },
                     { id: 135, nombre: 'QUESO PARMESANO' },
+                    { id: 136, nombre: 'QUESO GOUDA' }
                     //{ id: 132, nombre: 'QUESO MANCHEGO' },
-                    //{ id: 133, nombre: 'QUESO GOUDA' },
+                    //
                     //{ id: 134, nombre: 'QUESO MOZARELLA' }
                 ],
             },
@@ -590,6 +606,61 @@ const datos = [
 
 ];
 
+const datoz = [
+    {
+        id: 1,
+        nombre: 'PASEO EN UTV DESDE HUACACHINA',
+        
+    },
+    {
+        id: 2,
+        nombre: 'DECORACION CON FLORES SECAS',
+        
+    },
+    {
+        id: 3,
+        nombre: 'PIQUEOS BASICOS: ACEITUNAS, JAMON, CRACKERS CON DIP',
+        
+    },
+    {
+        id: 4,
+        nombre: 'TABLA DE FRUTAS',
+        
+    },
+    {
+        id: 5,
+        nombre: 'ESPUMANTE IMPORTADO (1 BOTELLA 3 PERSONAS)',
+        
+    },
+    {
+        id: 6,
+        nombre: 'FAROLES CANDELABROS',
+    },
+    {
+        id: 7,
+        nombre: 'ALFOMBRA DECORATIVA',
+    }
+
+
+];
+
+    datoz.forEach(categoria => {
+        // Crear fila principal de categoría
+        var filaPadre = document.createElement('tr');
+        filaPadre.className = 'border-b border-gray-300';
+
+        filaPadre.innerHTML = `
+            <td class="py-2 px-4 font-bold cursor-pointer bg-gray-200 hover:bg-gray-300 toggle-row" 
+                data-target="#subcategoriasy-${categoria.id}">
+                ${categoria.nombre}
+            </td>
+            <td class="py-2 px-4"></td>
+        `;
+
+        tablaDinamicax.appendChild(filaPadre);
+
+    });
+
     datos.forEach(categoria => {
         // Crear fila principal de categoría
         var filaPadre = document.createElement('tr');
@@ -663,6 +734,9 @@ const datos = [
             }
         });
     });
+
+
+
 
 
 
