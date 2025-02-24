@@ -30,13 +30,13 @@
                     >
                 </div>
     
-                <div class="grid grid-cols-3 gap-4 items-center">
+                <div class="grid grid-cols-4 gap-4 items-center">
                     <select  onchange="cambiarexperiencia()"
                         id="txtselect" 
                         class="col-span-2 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     >
                         <option value="">Seleccione un programa</option>
-                        <option value="1">Experiencia PICNIC: En el desierto de Huacachina</option>
+                        <option value="1" selected>PICNIC En el desierto de Huacachina</option>
                         <option value="2">Tiempo de Brindis Express</option>
                         <option value="3">Tiempo de Brindis</option>
                         <option value="4">MiniRiders: Conquista el desierto UTV RC</option>
@@ -76,7 +76,7 @@
                 </table>
             -->
 
-                <table class="min-w-full border border-gray-300">
+                <table class="min-w-full border border-gray-300" style="zoom:75%">
 
                     <thead>
                         <tr class="bg-gray-100">
@@ -89,9 +89,9 @@
 
                 </table>
             
-                <h2>¿Desea un upgrade de su Picnic?</h2>
+                <h2>¿Desea un upgrade para su Picnic?</h2>
 
-                <table class="min-w-full border border-gray-300">
+                <table class="min-w-full border border-gray-300" style="zoom:85%">
                     <thead>
                         <tr class="bg-gray-100">
                             <th class="py-2 px-4 text-left">Categorías</th>
@@ -507,7 +507,7 @@ const datos = [
                 items: [
                     { id: 171, nombre: 'COCA COLA' },
                     { id: 172, nombre: 'INCA KOLA' },
-                    { id: 173, nombre: 'AGUA SOCOSANI' }
+                    { id: 173, nombre: 'AGUA SOCOSANI CON GAS' }
 
                 ],
             },
@@ -519,7 +519,6 @@ const datos = [
                     { id: 181, nombre: 'BLANCO' },
                     { id: 182, nombre: 'TINTO' },
                     { id: 183, nombre: 'ESPUMANTE' },
-                    { id: 184, nombre: 'CHAMPAGNE' }
 
                 ],
             },
@@ -530,7 +529,8 @@ const datos = [
                 items: [
                     { id: 191, nombre: 'MOSTO VERDE' },
                     { id: 192, nombre: 'TORONTEL' },
-                    { id: 193, nombre: 'MOSCATEL' }
+                    { id: 193, nombre: 'MOSCATEL' },
+                    { id: 194, nombre: 'PISCO ITALIA' }
 
                 ],
             },
@@ -606,125 +606,109 @@ const datos = [
 
 ];
 
+
 const datoz = [
-    {
-        id: 1,
-        nombre: 'PASEO EN UTV DESDE HUACACHINA',
-        
-    },
-    {
-        id: 2,
-        nombre: 'DECORACION CON FLORES SECAS',
-        
-    },
-    {
-        id: 3,
-        nombre: 'PIQUEOS BASICOS: ACEITUNAS, JAMON, CRACKERS CON DIP',
-        
-    },
-    {
-        id: 4,
-        nombre: 'TABLA DE FRUTAS',
-        
-    },
-    {
-        id: 5,
-        nombre: 'ESPUMANTE IMPORTADO (1 BOTELLA 3 PERSONAS)',
-        
-    },
-    {
-        id: 6,
-        nombre: 'FAROLES CANDELABROS',
-    },
-    {
-        id: 7,
-        nombre: 'ALFOMBRA DECORATIVA',
-    }
-
-
+    { id: 1, nombre: 'PASEO EN UTV DESDE HUACACHINA' },
+    { id: 2, nombre: 'DECORACION CON FLORES' },
+    { id: 3, nombre: 'PIQUEOS BASICOS: ACEITUNAS, JAMON, CRACKERS CON DIP' },
+    { id: 4, nombre: 'TABLA DE FRUTAS DE LA ESTACIÓN' },
+    { id: 5, nombre: 'ESPUMANTE IMPORTADO (1 BOTELLA CADA 3 PERSONAS)' },
+    { id: 6, nombre: 'FAROLES CANDELABROS' },
+    { id: 7, nombre: 'ALFOMBRA DECORATIVA' },
+    { id: 8, nombre: 'GASEOSAS COCA COLA' },
+    { id: 9, nombre: 'AGUA SOCOSANI CON GAS' },
+    { id: 9, nombre: 'COJINES' },
+    { id: 9, nombre: 'CAMINO DE MESA DECORATIVO' }
 ];
 
-    datoz.forEach(categoria => {
-        // Crear fila principal de categoría
-        var filaPadre = document.createElement('tr');
-        filaPadre.className = 'border-b border-gray-300';
+datoz.forEach((categoria, index) => {
+    // Crear fila principal de categoría
+    var filaPadre = document.createElement('tr');
+    filaPadre.className = 'border-b border-gray-300';
 
-        filaPadre.innerHTML = `
-            <td class="py-2 px-4 font-bold cursor-pointer bg-gray-200 hover:bg-gray-300 toggle-row" 
-                data-target="#subcategoriasy-${categoria.id}">
-                ${categoria.nombre}
-            </td>
-            <td class="py-2 px-4"></td>
+    filaPadre.innerHTML = `
+        <td class="py-2 px-4 font-bold cursor-pointer bg-gray-200 hover:bg-gray-300 toggle-row" 
+            data-target="#subcategoriasy-${categoria.id}">
+            ${categoria.nombre}
+        </td>
+        <td class="py-2 px-4">
+            <textarea id="textarea-${index + 1}" rows='1' class="w-full p-2 border border-gray-300 rounded"></textarea>
+        </td>
+    `;
+
+    tablaDinamicax.appendChild(filaPadre);
+});
+
+let checkboxCounter = 1;
+
+datos.forEach(categoria => {
+    // Fila principal de categoría
+    var filaPadre = document.createElement('tr');
+    filaPadre.className = 'border-b border-gray-300';
+
+    filaPadre.innerHTML = `
+        <td class="py-2 px-4 font-bold cursor-pointer bg-gray-200 hover:bg-gray-300 toggle-row" 
+            data-target="#subcategorias-${categoria.id}">
+            <input type="checkbox" id="checkbox-${checkboxCounter++}" class="mr-2"> 
+            ${categoria.nombre}
+        </td>
+        <td class="py-2 px-4"></td>
+    `;
+
+    tablaDinamica.appendChild(filaPadre);
+
+    // Fila de subcategorías (oculta por defecto)
+    var filaSubcategorias = document.createElement('tr');
+    filaSubcategorias.id = `subcategorias-${categoria.id}`;
+    filaSubcategorias.className = 'hidden bg-gray-50';
+
+    var subcategoriasHTML = '';
+
+    categoria.hijos.forEach(subcategoria => {
+        subcategoriasHTML += `
+            <tr class="border-b border-gray-200">
+                <td class="py-2 px-4 cursor-pointer bg-gray-100 hover:bg-gray-200 toggle-row" 
+                    data-target="#items-${subcategoria.id}">
+                    <input type="checkbox" id="checkbox-${checkboxCounter++}" class="mr-2"> 
+                    ${subcategoria.nombre}
+                </td>
+                <td class="py-2 px-4"></td>
+            </tr>
+            <!-- Fila para los items de la subcategoría (oculta por defecto) -->
+            <tr id="items-${subcategoria.id}" class="hidden bg-gray-50">
+                <td colspan="2">
+                    <table class="ml-8 w-full border-l border-gray-300">
+                        ${subcategoria.items
+                            .map(
+                                item => `
+                                <tr>
+                                    <td class="py-2 px-4">
+                                        <input type="checkbox" id="checkbox-${checkboxCounter++}" class="mr-2"> 
+                                        ${item.nombre}
+                                    </td>
+                                    <td class="py-2 px-4">
+                                        <textarea id="textarea-${checkboxCounter}" rows="1" class="w-full border border-gray-300 rounded p-1" placeholder="Observación"></textarea>
+                                    </td>
+                                </tr>
+                            `
+                            )
+                            .join('')}
+                    </table>
+                </td>
+            </tr>
         `;
-
-        tablaDinamicax.appendChild(filaPadre);
-
     });
 
-    datos.forEach(categoria => {
-        // Crear fila principal de categoría
-        var filaPadre = document.createElement('tr');
-        filaPadre.className = 'border-b border-gray-300';
+    filaSubcategorias.innerHTML = `
+        <td colspan="2">
+            <table class="ml-4 w-full border-l border-gray-300">
+                ${subcategoriasHTML}
+            </table>
+        </td>
+    `;
 
-        filaPadre.innerHTML = `
-            <td class="py-2 px-4 font-bold cursor-pointer bg-gray-200 hover:bg-gray-300 toggle-row" 
-                data-target="#subcategorias-${categoria.id}">
-                ${categoria.nombre}
-            </td>
-            <td class="py-2 px-4"></td>
-        `;
-
-        tablaDinamica.appendChild(filaPadre);
-
-        // Crear fila para las subcategorías (oculta por defecto)
-        var filaSubcategorias = document.createElement('tr');
-        filaSubcategorias.id = `subcategorias-${categoria.id}`;
-        filaSubcategorias.className = 'hidden bg-gray-50';
-
-        var subcategoriasHTML = '';
-
-        categoria.hijos.forEach(subcategoria => {
-            // Crear fila de subcategoría
-            subcategoriasHTML += `
-                <tr class="border-b border-gray-200">
-                    <td class="py-2 px-4 cursor-pointer bg-gray-100 hover:bg-gray-200 toggle-row" 
-                        data-target="#items-${subcategoria.id}">
-                        ${subcategoria.nombre}
-                    </td>
-                    <td class="py-2 px-4"></td>
-                </tr>
-                <!-- Fila para los items de la subcategoría (oculta por defecto) -->
-                <tr id="items-${subcategoria.id}" class="hidden bg-gray-50">
-                    <td colspan="2">
-                        <table class="ml-8 w-full border-l border-gray-300">
-                            ${subcategoria.items
-                                .map(
-                                    item => `
-                                    <tr>
-                                        <td class="py-2 px-4">${item.nombre}</td>
-                                        <td class="py-2 px-4">Cantidad</td>
-                                        <td class="py-2 px-4">Observaciones</td>
-                                    </tr>
-                                `
-                                )
-                                .join('')}
-                        </table>
-                    </td>
-                </tr>
-            `;
-        });
-
-        filaSubcategorias.innerHTML = `
-            <td colspan="2">
-                <table class="ml-4 w-full border-l border-gray-300">
-                    ${subcategoriasHTML}
-                </table>
-            </td>
-        `;
-
-        tablaDinamica.appendChild(filaSubcategorias);
-    });
-
+    tablaDinamica.appendChild(filaSubcategorias);
+});
     // Agregar funcionalidad de acordeón
     document.querySelectorAll('.toggle-row').forEach(el => {
         el.addEventListener('click', function () {
