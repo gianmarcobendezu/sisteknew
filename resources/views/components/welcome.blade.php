@@ -75,6 +75,8 @@
                     </tbody>
                 </table>
             -->
+            
+                <h2>¿Desea upgrade de su Picnic?</h2>
 
                 <table class="min-w-full border border-gray-300">
                     <thead>
@@ -424,21 +426,23 @@ const datos = [
                 id: 11,
                 nombre: 'BOCADITOS',
                 items: [
-                    { id: 111, nombre: 'Item 1.1.1' },
-                    { id: 112, nombre: 'Item 1.1.2' },
+
+                    { id: 111, nombre: 'MINI EMPANADAS' },
+                    { id: 112, nombre: 'MINI SANDWICH TRIPLE DE POLLO' },
+                    { id: 113, nombre: 'MINI BUTIFARRA DE JAMON CON QUESO' },
+                    { id: 114, nombre: 'MINI BUTIFARRA DE JAMON DEL PAIS' },
+                    { id: 115, nombre: 'MINI ALFAJOR' },
+                    { id: 116, nombre: 'MINI PROFITEROLES' }
+
                 ],
             },
             {
                 id: 12,
-                nombre: 'FIAMBRES',
+                nombre: 'EMBUTIDOS - CHARCUTERIA',
                 items: [
                     { id: 121, nombre: 'JAMÓN SERRANO' },
-                    { id: 122, nombre: 'JAMÓN AHUMADO' },
-
-                    { id: 123, nombre: 'JAMÓN CROCANTE' },
-
-                    { id: 124, nombre: 'JAMÓN DE PAÍS' },
-                    { id: 125, nombre: 'SALAME ESPAÑOL' },
+                    { id: 122, nombre: 'JAMÓN CROCANTE' },
+                    { id: 123, nombre: 'SALAME' }
                 ],
             },
             
@@ -447,25 +451,71 @@ const datos = [
                 nombre: 'QUESOS',
                 items: [
                     { id: 131, nombre: 'QUESO DE CABRA' },
-                    { id: 132, nombre: 'QUESO MANCHEGO' },
-                    { id: 133, nombre: 'QUESO GOUDA' },
-                    { id: 134, nombre: 'QUESO MOZARELLA' }
+                    { id: 132, nombre: 'QUESO ANDINO' },
+                    { id: 133, nombre: 'QUESO PARIA' },
+                    { id: 134, nombre: 'QUESO EDAM' },
+                    { id: 135, nombre: 'QUESO PARMESANO' },
+                    //{ id: 132, nombre: 'QUESO MANCHEGO' },
+                    //{ id: 133, nombre: 'QUESO GOUDA' },
+                    //{ id: 134, nombre: 'QUESO MOZARELLA' }
                 ],
             },
             
 
             {
                 id: 14,
-                nombre: 'CAFE E INFUSIONES',
+                nombre: 'CAFE',
                 items: [
-                    { id: 141, nombre: 'Item 1.4.1' },
+                    { id: 141, nombre: 'CAFE' },
                 ],
             },
             {
                 id: 15,
-                nombre: 'BEBIDAS',
+                nombre: 'TE',
                 items: [
-                    { id: 151, nombre: 'Item 1.5.1' },
+                    { id: 151, nombre: 'TE' },
+                ],
+            },
+            
+            {
+                id: 16,
+                nombre: 'INFUSIONES',
+                items: [
+                    { id: 161, nombre: 'INFUSIONES' },
+                ],
+            },
+
+            {
+                id: 17,
+                nombre: 'GASEOSAS Y AGUA',
+                items: [
+                    { id: 171, nombre: 'COCA COLA' },
+                    { id: 172, nombre: 'INCA KOLA' },
+                    { id: 173, nombre: 'AGUA SOCOSANI' }
+
+                ],
+            },
+
+            {
+                id: 18,
+                nombre: 'VINOS Y ESPUMANTES',
+                items: [
+                    { id: 181, nombre: 'BLANCO' },
+                    { id: 182, nombre: 'TINTO' },
+                    { id: 183, nombre: 'ESPUMANTE' },
+                    { id: 184, nombre: 'CHAMPAGNE' }
+
+                ],
+            },
+
+            {
+                id: 19,
+                nombre: 'PISCOS',
+                items: [
+                    { id: 191, nombre: 'MOSTO VERDE' },
+                    { id: 192, nombre: 'TORONTEL' },
+                    { id: 193, nombre: 'MOSCATEL' }
+
                 ],
             },
 
@@ -473,78 +523,68 @@ const datos = [
     },
     {
         id: 2,
-        nombre: 'LUCES',
+        nombre: 'ILUMINACIÓN',
         hijos: [
             {
                 id: 21,
-                nombre: 'GUIRNALDAS',
+                nombre: 'GUIRNALDAS SOLARES',
                 items: [
-                    { id: 211, nombre: 'Item 2.1.1' },
+                    { id: 211, nombre: 'GUIRNALDAS SOLARES' },
                 ],
             },
+            {
+                id: 22,
+                nombre: 'CANDELABROS SOLARES (LED)',
+                items: [
+                    { id: 221, nombre: 'CANDELABROS SOLARES (LED)' },
+                ],
+            },
+
+            {
+                id: 23,
+                nombre: 'ESTACAS PARA CAMINO (LED)',
+                items: [
+                    { id: 231, nombre: 'ESTACAS PARA CAMINO (LED)' },
+                ],
+            },
+
+
+            {
+                id: 24,
+                nombre: 'VELAS (LED)',
+                items: [
+                    { id: 241, nombre: 'VELAS (LED)' },
+                ],
+            },
+
+
         ],
     },
     {
         id: 3,
-        nombre: 'ENTRETENIMIENTO',
+        nombre: 'SHOW',
         hijos: [
             {
                 id: 31,
-                nombre: 'SHOW AFRO',
+                nombre: 'FESTEJO',
                 items: [
-                    { id: 311, nombre: 'Item 3.1.1' },
+                    { id: 311, nombre: 'FESTEJO' },
                 ],
             },
             {
                 id: 32,
-                nombre: 'SAXOFONISTA',
+                nombre: 'ZAPATEO',
                 items: [
-                    { id: 312, nombre: 'Item 3.1.1' },
+                    { id: 312, nombre: 'ZAPATEO' },
                 ],
             },
             {
                 id: 33,
-                nombre: 'DJ',
+                nombre: 'MARINERA',
                 items: [
-                    { id: 313, nombre: 'Item 3.1.1' },
-                ],
-            },
-            {
-                id: 34,
-                nombre: 'VIOLIN',
-                items: [
-                    { id: 314, nombre: 'Item 3.1.1' },
-                ],
-            },
-            {
-                id: 35,
-                nombre: 'JUEGOS ARTIFICIALES',
-                items: [
-                    { id: 315, nombre: 'Item 3.1.1' },
-                ],
-            },
-            {
-                id: 36,
-                nombre: 'FOTOGRAFO',
-                items: [
-                    { id: 316, nombre: 'Item 3.1.1' },
-                ],
-            },
-            {
-                id: 37,
-                nombre: 'FOTOGRAFO',
-                items: [
-                    { id: 317, nombre: 'Item 3.1.1' },
-                ],
-            },
-            {
-                id: 38,
-                nombre: 'VIDEO CON DRONE',
-                items: [
-                    { id: 318, nombre: 'Item 3.1.1' },
+                    { id: 313, nombre: 'MARINERA' },
                 ],
             }
-
         ],
     },
 
