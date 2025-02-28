@@ -8,8 +8,8 @@ use GuzzleHttp\Client;
 class AIImageController extends Controller
 {
     //
-    //private $apiKey = '7c5f24c609e14a23a5adf81627dc2188';
-    private $apiKey = 'ef52357583914138a6bb36e4b2a2c26a';
+    private $apiKey = '7c5f24c609e14a23a5adf81627dc2188';
+    //private $apiKey = 'ef52357583914138a6bb36e4b2a2c26a';
     public function generateImage(Request $request)
     {
         $request->validate([

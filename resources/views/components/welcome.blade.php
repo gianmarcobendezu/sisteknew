@@ -230,7 +230,7 @@
 
 $('#generate').click(function(){
     
-                var text = "desert picnic sunset";
+                var text = "desert picnic with sunset in dunes huacachina without tree with table foods";
 
                 if(text.trim() === ''){
                     alert('Por favor, ingresa una descripción.');
