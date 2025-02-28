@@ -270,7 +270,7 @@ $('#generate').click(function(){
                             $('#status').text('Procesando... ' + response.percentage + '%');
                             setTimeout(function() {
                                 checkStatus(taskId);
-                            }, 15000);
+                            }, 3000);
                         } else if(response.imageUrl) {
                             $('#status').text('Imagen generada con éxito.');
                             $('#result').html('<img src="' + response.imageUrl + '" alt="Imagen generada" width="400">');
