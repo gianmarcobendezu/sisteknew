@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AIImageController;
 
 
 Route::get('/', function () {
@@ -19,5 +20,7 @@ Route::middleware([
 
     Route::resource('categories', CategoryController::class);
 
+    Route::post('/generate-image', [AIImageController::class, 'generateImage']);
+    Route::get('/get-image-result', [AIImageController::class, 'getImageResult']);
 
 });

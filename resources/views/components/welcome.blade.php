@@ -56,7 +56,9 @@
                         type="text" 
                         id="txttotal" 
                         placeholder="Total"
-                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        readonly
+
+                        class="w-full px-4 py-2 border rounded-lg bg-blue-500 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     >
                 </div>
                 
@@ -105,7 +107,7 @@
 
                 
     
-                <button 
+                <button  id="generate"
                     class="w-full py-3 bg-[#77006b]  text-white rounded-lg font-semibold shadow-lg hover:bg-gray-600 transition"
                 >
                     ENVIAR
@@ -113,12 +115,11 @@
             </div>
     
             <!-- Imagen -->
-            <div class="flex items-center justify-center">
-                <img 
-                    alt="Imagen Generador IA" 
-                    class="w-64 h-64 object-cover rounded-lg border border-gray-200"
-                >
+
+            <div id="result" class="flex items-center justify-center">
+               
             </div>
+
         </div>
     </div>
     
@@ -223,7 +224,65 @@
     </div> -->
 
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
 <script>
+
+$('#generate').click(function(){
+    
+                var text = "desert picnic sunset";
+
+                if(text.trim() === ''){
+                    alert('Por favor, ingresa una descripción.');
+                    return;
+                }
+
+                $('#status').text('Generando tarea...');
+
+                $.ajax({
+                    url: "{{ url('/generate-image') }}",
+                    type: "POST",
+                    data: {
+                        text: text,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        if(response.taskId) {
+                            $('#status').text('Tarea en proceso...');
+                            checkStatus(response.taskId);
+                        } else {
+                            $('#status').text('Error al generar la imagen.');
+                        }
+                    },
+                    error: function() {
+                        $('#status').text('Ocurrió un error al generar la imagen.');
+                    }
+                });
+            });
+
+            function checkStatus(taskId) {
+                $.ajax({
+                    url: "{{ url('/get-image-result') }}",
+                    type: "GET",
+                    data: { taskId: taskId },
+                    success: function(response) {
+                        if(response.status === 'processing') {
+                            $('#status').text('Procesando... ' + response.percentage + '%');
+                            setTimeout(function() {
+                                checkStatus(taskId);
+                            }, 15000);
+                        } else if(response.imageUrl) {
+                            $('#status').text('Imagen generada con éxito.');
+                            $('#result').html('<img src="' + response.imageUrl + '" alt="Imagen generada" width="400">');
+                        } else {
+                            $('#status').text('Error al obtener la imagen.');
+                        }
+                    },
+                    error: function() {
+                        $('#status').text('Ocurrió un error al verificar la imagen.');
+                    }
+                });
+            }
 
     function cambiarexperiencia()
     {
@@ -600,7 +659,37 @@ const datos = [
                 items: [
                     { id: 313, nombre: 'MARINERA' },
                 ],
+            },
+            {
+                id: 34,
+                nombre: 'VIOLIN',
+                items: [
+                    { id: 341, nombre: 'VIOLIN' },
+                ],
+            },
+            {
+                id: 35,
+                nombre: 'SAXOFON',
+                items: [
+                    { id: 351, nombre: 'SAXOFON' },
+                ],
+            },
+            {
+                id: 36,
+                nombre: 'GUITARRA',
+                items: [
+                    { id: 313, nombre: 'GUITARRA' },
+                ],
+            },
+            {
+                id: 37,
+                nombre: 'DECORACION TEMATICA',
+                items: [
+                    { id: 313, nombre: 'DECORACION TEMATICA' },
+                ],
             }
+
+
         ],
     },
 
